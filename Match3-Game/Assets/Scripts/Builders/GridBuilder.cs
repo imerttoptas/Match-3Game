@@ -14,7 +14,7 @@ public class GridBuilder : MonoBehaviour
      /// <param name="gridSizeX">Number of columns</param>
      /// <param name="gridSizeY">Number of rows</param>
      /// <param name="offset">Distance between each cells</param> 
-    public void GenerateGrid(int gridSizeX, int gridSizeY, float offset)
+    public void GenerateGrid(List<Cell>cellList, int gridSizeX, int gridSizeY, float offset)
     {
         Vector3 cellScale = GetCalculatedCellScale(gridSizeX, gridSizeY);
         Vector2 firstCellPosition = gridBackground.transform.position -
@@ -23,7 +23,8 @@ public class GridBuilder : MonoBehaviour
         {
             for (int col = 0; col < gridSizeY; col++)
             {
-                CreateCell(row,col,firstCellPosition,cellScale,offset);
+                Cell cell = GetCreatedCell(row,col,firstCellPosition,cellScale,offset);
+                cellList.Add(cell);
             }
         }
     }
@@ -35,13 +36,16 @@ public class GridBuilder : MonoBehaviour
     /// <param name="firstCellPosition">The position of the first cell</param>
     /// <param name="cellScale">The scale of the cell</param>
     /// <param name="offSet">Distance between cell</param>
-    private void CreateCell(int row, int col, Vector2 firstCellPosition, Vector2 cellScale, float offSet)
+    /// <returns>created cell</returns>
+    
+    private Cell GetCreatedCell(int row, int col, Vector2 firstCellPosition, Vector2 cellScale, float offSet)
     {
         
         Cell createdCell = Instantiate(cellPrefab, gridBackground.transform, true);
         createdCell.transform.position = firstCellPosition + new Vector2(row, col) * cellScale;
         createdCell.transform.localScale = cellScale - Vector2.one*offSet;
         createdCell.name = "cell" + row + "x" + col;
+        return createdCell;
     }
     /// <summary>
     /// Calculate and return the scale of each cell
