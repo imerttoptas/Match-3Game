@@ -7,8 +7,7 @@ public class GridBuilder : MonoBehaviour
 {
     [SerializeField] private Cell cellPrefab;
     [SerializeField] private SpriteRenderer gridBackground;
-    
-     /// <summary>
+    /// <summary>
      ///  Generates a grid of cells.
      /// </summary>
      /// <param name="gridSizeX">Number of columns</param>
@@ -59,5 +58,7 @@ public class GridBuilder : MonoBehaviour
         float cellScaleY = gridBackground.bounds.size.y / gridSizeY;
         return new Vector3(cellScaleX, cellScaleY);
     }
+
     
+
 }
