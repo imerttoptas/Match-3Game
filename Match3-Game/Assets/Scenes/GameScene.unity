@@ -359,7 +359,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59ea2e841e580094cbdf2b66ac19c478, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  matchObjectPrefabs:
+  matchObjectPrefabsList:
   - {fileID: 8512681217925728779, guid: 7dafb7a3bc8ec6f4c9276146b9885de9, type: 3}
   - {fileID: 4491770191676567277, guid: 249eb00bf4ed7c6489691e766e0fc6fb, type: 3}
   - {fileID: 5265689727711303827, guid: ba458ecf51b9fb5469961b706d75e626, type: 3}
@@ -497,5 +497,5 @@ MonoBehaviour:
   levelBuilder: {fileID: 854670113}
   gridSizeX: 9
   gridSizeY: 9
-  offset: 0.05
+  offset: 0
   cellList: []

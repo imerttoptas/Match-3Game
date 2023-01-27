@@ -43,7 +43,7 @@ public class GridBuilder : MonoBehaviour
         Cell createdCell = Instantiate(cellPrefab, gridBackground.transform, true);
         createdCell.transform.position = firstCellPosition + new Vector2(row, col) * cellScale;
         createdCell.transform.localScale = cellScale - Vector2.one*offSet;
-        createdCell.name = "cell" + row + "x" + col;
+        createdCell.Init(row,col);
         return createdCell;
     }
     /// <summary>
