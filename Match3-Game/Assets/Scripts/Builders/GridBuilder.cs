@@ -7,12 +7,14 @@ public class GridBuilder : MonoBehaviour
 {
     [SerializeField] private Cell cellPrefab;
     [SerializeField] private SpriteRenderer gridBackground;
+
     /// <summary>
-     ///  Generates a grid of cells.
-     /// </summary>
-     /// <param name="gridSizeX">Number of columns</param>
-     /// <param name="gridSizeY">Number of rows</param>
-     /// <param name="offset">Distance between each cells</param> 
+    ///  Generates a grid of cells.
+    /// </summary>
+    /// <param name="cellList">empty list of cell to add created cells</param>
+    /// <param name="gridSizeX">Number of columns</param>
+    /// <param name="gridSizeY">Number of rows</param>
+    /// <param name="offset">Distance between each cells</param> 
     public void GenerateGrid(List<Cell>cellList, int gridSizeX, int gridSizeY, float offset)
     {
         Vector3 cellScale = GetCalculatedCellScale(gridSizeX, gridSizeY);
@@ -39,9 +41,8 @@ public class GridBuilder : MonoBehaviour
     
     private Cell GetCreatedCell(int row, int col, Vector2 firstCellPosition, Vector2 cellScale, float offSet)
     {
-        
         Cell createdCell = Instantiate(cellPrefab, gridBackground.transform, true);
-        createdCell.transform.position = firstCellPosition + new Vector2(row, col) * cellScale;
+        createdCell.transform.position = firstCellPosition + new Vector2(col, row) * cellScale;
         createdCell.transform.localScale = cellScale - Vector2.one*offSet;
         createdCell.Init(row,col);
         return createdCell;
