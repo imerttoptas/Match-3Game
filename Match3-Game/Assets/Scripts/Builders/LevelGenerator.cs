@@ -12,18 +12,21 @@ public class LevelGenerator : MonoBehaviour
     {
         foreach (Cell cell in cellList)
         {
-            CreateMatchObject(cell.transform);
+            CreateMatchObject(cell);
         }
     }
     
-    private void CreateMatchObject(Transform transform)
+    private void CreateMatchObject(Cell cell)
     {
-        GameObject createdMatchObject = Instantiate(GetRandomMatchObject(), transform, true);
-        createdMatchObject.transform.position = transform.position;
-        createdMatchObject.transform.localScale = transform.localScale;
-        createdMatchObject.transform.SetParent(transform);
+        Transform matchObjectTransform = cell.transform;
+        GameObject matchObjectPrefab = GetRandomMatchObject();
+        GameObject createdMatchObject = Instantiate(matchObjectPrefab, matchObjectTransform, true);
+        cell.cellType = (CellType)matchObjectPrefabsList.IndexOf(matchObjectPrefab);
+        createdMatchObject.transform.position = matchObjectTransform.position;
+        createdMatchObject.transform.localScale = matchObjectTransform.localScale;
+        createdMatchObject.transform.SetParent(matchObjectTransform);
     }
-
+    
     private GameObject GetRandomMatchObject()
     {
         int randomIndex = Random.Range(0, matchObjectPrefabsList.Count - 1);
