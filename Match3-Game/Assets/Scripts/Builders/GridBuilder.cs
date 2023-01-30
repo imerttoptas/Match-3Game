@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,17 +10,17 @@ public class GridBuilder : MonoBehaviour
     ///  Generates a grid of cells.
     /// </summary>
     /// <param name="cellList">empty list of cell to add created cells</param>
-    /// <param name="gridSizeX">Number of columns</param>
-    /// <param name="gridSizeY">Number of rows</param>
+    /// <param name="gridWidth">Number of columns</param>
+    /// <param name="gridHeight">Number of rows</param>
     /// <param name="offset">Distance between each cells</param> 
-    public void GenerateGrid(List<Cell>cellList, int gridSizeX, int gridSizeY, float offset)
+    public void GenerateGrid(List<Cell>cellList, int gridWidth, int gridHeight, float offset)
     {
-        Vector3 cellScale = GetCalculatedCellScale(gridSizeX, gridSizeY);
+        Vector3 cellScale = GetCalculatedCellScale(gridWidth, gridHeight);
         Vector2 firstCellPosition = gridBackground.transform.position -
                                     (gridBackground.bounds.size - cellScale )/2;
-        for (int row = 0; row < gridSizeX; row++)
+        for (int row = 0; row < gridWidth; row++)
         {
-            for (int col = 0; col < gridSizeY; col++)
+            for (int col = 0; col < gridHeight; col++)
             {
                 Cell cell = GetCreatedCell(row,col,firstCellPosition,cellScale,offset);
                 cellList.Add(cell);
@@ -50,13 +48,13 @@ public class GridBuilder : MonoBehaviour
     /// <summary>
     /// Calculate and return the scale of each cell
     /// </summary>
-    /// <param name="gridSizeX">Number of row in the grid</param>
-    /// <param name="gridSizeY">Number of column in the grid</param>
+    /// <param name="gridWidth">Number of row in the grid</param>
+    /// <param name="gridHeight">Number of column in the grid</param>
     /// <returns>Scale of the cell</returns>
-    private Vector3 GetCalculatedCellScale(int gridSizeX,int gridSizeY)
+    private Vector3 GetCalculatedCellScale(int gridWidth,int gridHeight)
     {
-        float cellScaleX = gridBackground.bounds.size.x / gridSizeX;
-        float cellScaleY = gridBackground.bounds.size.y / gridSizeY;
+        float cellScaleX = gridBackground.bounds.size.x / gridWidth;
+        float cellScaleY = gridBackground.bounds.size.y / gridHeight;
         return new Vector3(cellScaleX, cellScaleY);
     }
 
