@@ -2,16 +2,15 @@ using UnityEngine;
 
 public class MatchObject : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private float offset;
+    public MatchObjectType matchObjectType;
+    
+    
+    public void Init(Transform _transform)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        transform.position = _transform.position;
+        transform.SetParent(_transform);
+        transform.localScale = _transform.localScale;
     }
     
     
