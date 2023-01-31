@@ -5,31 +5,27 @@ using Random = UnityEngine.Random;
 
 public class LevelGenerator : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> matchObjectPrefabsList;
+    [SerializeField] private List<MatchObject> matchObjectPrefabList;
     
     
     public void GenerateRandomLevel(List<Cell> cellList)
     {
         foreach (Cell cell in cellList)
         {
-            CreateMatchObject(cell);
+            CreateMatchObject(cell.transform);
         }
     }
     
-    private void CreateMatchObject(Cell cell)
+    private void CreateMatchObject(Transform targetTransform)
     {
-        Transform matchObjectTransform = cell.transform;
-        GameObject matchObjectPrefab = GetRandomMatchObject();
-        GameObject createdMatchObject = Instantiate(matchObjectPrefab, matchObjectTransform, true);
-        cell.cellType = (CellType)matchObjectPrefabsList.IndexOf(matchObjectPrefab);
-        createdMatchObject.transform.position = matchObjectTransform.position;
-        createdMatchObject.transform.localScale = matchObjectTransform.localScale;
-        createdMatchObject.transform.SetParent(matchObjectTransform);
+        MatchObject matchObjectPrefab = GetRandomMatchObject();
+        MatchObject createdMatchObject = Instantiate(matchObjectPrefab);
+        createdMatchObject.Init(targetTransform);
     }
     
-    private GameObject GetRandomMatchObject()
+    private MatchObject GetRandomMatchObject()
     {
-        int randomIndex = Random.Range(0, matchObjectPrefabsList.Count - 1);
-        return matchObjectPrefabsList[randomIndex];
+        int randomIndex = Random.Range(0, matchObjectPrefabList.Count - 1);
+        return matchObjectPrefabList[randomIndex];
     }
 }

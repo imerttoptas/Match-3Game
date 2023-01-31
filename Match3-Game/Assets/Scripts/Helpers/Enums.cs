@@ -1,5 +1,10 @@
 public enum CellType
 {
+    
+}
+
+public enum MatchObjectType
+{
     Red = 0,
     Green = 1,
     Blue = 2,

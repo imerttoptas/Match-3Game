@@ -405,12 +405,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59ea2e841e580094cbdf2b66ac19c478, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  matchObjectPrefabsList:
-  - {fileID: 7793757974822245353, guid: 6b15245931717214da3d0a0787beba19, type: 3}
-  - {fileID: 4491770191676567277, guid: 249eb00bf4ed7c6489691e766e0fc6fb, type: 3}
-  - {fileID: 8512681217925728779, guid: 7dafb7a3bc8ec6f4c9276146b9885de9, type: 3}
-  - {fileID: 5440383402152019113, guid: 339977d5ffb96a04196162af86dff344, type: 3}
-  - {fileID: 5265689727711303827, guid: ba458ecf51b9fb5469961b706d75e626, type: 3}
+  matchObjectPrefabList:
+  - {fileID: -7748891888001938479, guid: 6b15245931717214da3d0a0787beba19, type: 3}
+  - {fileID: -4105154059767914537, guid: 249eb00bf4ed7c6489691e766e0fc6fb, type: 3}
+  - {fileID: -4967398496834138299, guid: 7dafb7a3bc8ec6f4c9276146b9885de9, type: 3}
+  - {fileID: 2123186307707512394, guid: 339977d5ffb96a04196162af86dff344, type: 3}
+  - {fileID: 7933763982170369886, guid: ba458ecf51b9fb5469961b706d75e626, type: 3}
 --- !u!1 &1049305991
 GameObject:
   m_ObjectHideFlags: 0
@@ -541,7 +541,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gridBuilder: {fileID: 600960040}
   levelBuilder: {fileID: 854670113}
-  gridSizeX: 9
-  gridSizeY: 9
+  gridWidth: 9
+  gridHeight: 9
   offset: 0
-  cellList: []

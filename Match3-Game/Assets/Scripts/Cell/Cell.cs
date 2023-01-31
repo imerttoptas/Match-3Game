@@ -9,7 +9,6 @@ public class Cell : MonoBehaviour
     public int ColNumber => _colNumber;
 
     public CellType cellType;
-    private MatchObject _matchObject;
     
     /// <summary>
     /// Initialize the cell with the provided row and column numbers.
@@ -22,9 +21,14 @@ public class Cell : MonoBehaviour
         _colNumber = colNumber;
         name = $"Cell{_rowNumber}x{_colNumber}";
     }
-
-    public void ChangeCellType(CellType targetCellType)
+    
+    public MatchObject GetChildMatchObject()
     {
-        cellType = targetCellType;
+        if (transform.childCount >0)
+        {
+            return GetComponentInChildren<MatchObject>();
+        }
+
+        return null;
     }
 }
