@@ -12,11 +12,13 @@ public enum MatchObjectType
     Orange = 4
 }
 
-public enum MoveType
+public enum MatchType
 {
-    Left = 0,
-    Right = 1,
-    Up = 2,
-    Down =3
+    Match3 = 0,
+    HorizontalMatch4 = 1,
+    VerticalMatch4 = 2,
+    Square = 3,
+    Match5 = 4
 }
+
 
