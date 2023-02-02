@@ -1,11 +1,14 @@
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// 
+/// </summary>
 public class GridBuilder : MonoBehaviour
 {
     [SerializeField] private Cell cellPrefab;
     [SerializeField] private SpriteRenderer gridBackground;
-
+    
+    
     /// <summary>
     ///  Generates a grid of cells.
     /// </summary>
@@ -27,6 +30,7 @@ public class GridBuilder : MonoBehaviour
             }
         }
     }
+    
     /// <summary>
     ///  Create a new cell at the specified position and scale 
     /// </summary>
@@ -36,7 +40,6 @@ public class GridBuilder : MonoBehaviour
     /// <param name="cellScale">The scale of the cell</param>
     /// <param name="offSet">Distance between cell</param>
     /// <returns>created cell</returns>
-    
     private Cell GetCreatedCell(int row, int col, Vector2 firstCellPosition, Vector2 cellScale, float offSet)
     {
         Cell createdCell = Instantiate(cellPrefab, gridBackground.transform, true);
