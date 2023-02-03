@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7933763982170369886}
   m_Layer: 0
   m_Name: O
-  m_TagString: Untagged
+  m_TagString: MatchObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97,4 +97,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1482871703ba95947a6da4294b23ae03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  matchObjectType: 4
+  offset: 0
+  blockType: 4

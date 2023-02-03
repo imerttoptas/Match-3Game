@@ -1,11 +1,12 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
-public class MatchObject : MonoBehaviour
+public class Block : MonoBehaviour
 {
     [SerializeField] private float offset;
-    public MatchObjectType matchObjectType;
-    
-    
+    [SerializeField] private BlockType blockType;
+    public BlockType BlockType => blockType;
+        
     public void Init(Transform _transform)
     {
         transform.position = _transform.position;
