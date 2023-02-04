@@ -7,21 +7,20 @@ public class MatchChecker : MonoBehaviour
 {
     
     [SerializeField] private GridManager _gridManager;
-
+    private int a = 0;
     public bool IsThereAMatch(Cell cell, BlockType blockType)
     {
-        Debug.Log(blockType + "for" + cell.name);
         return GetVerticalMatches(cell, blockType).Count >= 2 || GetHorizontalMatches(cell, blockType).Count >= 2;
     }
     
     public List<Cell> GetAllMatches(Cell cell)
     {
         BlockType targetType = cell.GetChildBlock().BlockType;
-        
-        List<Cell> verticalCells = GetMatchingCellsInDirection(cell, new Vector2(1, 0), targetType)
-            .Concat(GetMatchingCellsInDirection(cell, new Vector2(-1, 0), targetType)).ToList();
         List<Cell> horizontalCells = GetMatchingCellsInDirection(cell, new Vector2(0, 1), targetType)
             .Concat(GetMatchingCellsInDirection(cell, new Vector2(0, -1), targetType)).ToList();
+        List<Cell> verticalCells = GetMatchingCellsInDirection(cell, new Vector2(1, 0), targetType)
+            .Concat(GetMatchingCellsInDirection(cell, new Vector2(-1, 0), targetType)).ToList();
+        
 
         return verticalCells.Concat(horizontalCells).ToList();
     }
@@ -50,7 +49,7 @@ public class MatchChecker : MonoBehaviour
      /// <param name="targetBlockType">Block type for Match control</param>
      /// <param name="maxSteps">Number of cells to look in the given direction</param>
      /// <returns>the list of matching cells found in the given direction.</returns>
-     private List<Cell> GetMatchingCellsInDirection(Cell cell, Vector2 direction,BlockType targetBlockType,int maxSteps = 2)
+     public List<Cell> GetMatchingCellsInDirection(Cell cell, Vector2 direction,BlockType targetBlockType,int maxSteps = 2)
      {
         List<Cell> matchingCells = new List<Cell>();
         int rowStep = (int)direction.x;
@@ -71,9 +70,17 @@ public class MatchChecker : MonoBehaviour
     /// <param name="cell">Cell to compare BLockType</param>
     /// <param name="targetBlockType">target BLockType </param>
     /// <returns>True if the BlockType of Cell is same with given BlockType, otherwise false </returns>
-    private bool IsCellMatching(Cell cell,BlockType targetBlockType)
+    
+    private bool IsCellMatching(Cell cell, BlockType targetBlockType)
     {
-        return cell && cell.GetChildBlock().BlockType == targetBlockType;
+        if (cell && cell.GetChildBlock())
+        {
+            return cell.GetChildBlock().BlockType == targetBlockType;
+        }
+        
+        return false;
+
     }
+
     
 }
