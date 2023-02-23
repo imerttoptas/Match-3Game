@@ -1,6 +1,4 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using DG.Tweening;
 
@@ -30,7 +28,6 @@ public class GridManager : MonoBehaviour
     /// <param name="secondCell">second Block's cell</param>
     public void SwapBlocks(Cell firstCell, Cell secondCell)
     {
-        Debug.Log("first cell1" + firstCell.name + "second cell1" + secondCell.name);
         Transform firstCellTransform = firstCell.transform;
         Transform secondCellTransform = secondCell.transform;
         Block firstBlock = firstCell.GetChildBlock();
@@ -39,8 +36,6 @@ public class GridManager : MonoBehaviour
         secondBlock.transform.SetParent(firstCellTransform);
         firstBlock.transform.SetParent(secondCellTransform);
         
-        Debug.Log("is there a match first cell" + matchChecker.IsThereAMatch(firstCell,secondBlock.BlockType));
-        Debug.Log("is there a match second cell" + matchChecker.IsThereAMatch(secondCell,firstBlock.BlockType));
         if (matchChecker.IsThereAMatch(firstCell,secondBlock.BlockType) || matchChecker.IsThereAMatch(secondCell,firstBlock.BlockType))
         {
             firstBlock.transform.DOMove(secondCellTransform.position, 0.5f);

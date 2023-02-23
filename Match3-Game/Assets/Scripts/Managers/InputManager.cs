@@ -5,8 +5,8 @@ public class InputManager : MonoBehaviour
     [SerializeField] private Camera mainCam;
     [SerializeField] private GridManager gridManager;
     private Cell _firstCell;
-    private bool _hasSwapped = false;
-    // private MoveType _currentMoveType;
+    private bool _hasSwapped;
+    
     void Update()
     {
         if (Input.GetMouseButton(0))
@@ -21,9 +21,8 @@ public class InputManager : MonoBehaviour
                 // swap conditions
                 if(_firstCell && hitCell != _firstCell && !_hasSwapped)
                 {
-                    Debug.Log(_firstCell.name + "    "+ hitCell.name);
-                    gridManager.SwapMatchObjects(_firstCell,hitCell);
-                    _firstCell = null;
+                    gridManager.SwapBlocks(_firstCell,hitCell);
+                    _firstCell = null; 
                     _hasSwapped = true;
                 }
             }
@@ -53,30 +52,6 @@ public class InputManager : MonoBehaviour
         }
         return null;
     }
-
-    // private void SetDirection(Cell firstCell, Cell secondCell)
-    // {
-    //     if (firstCell.RowNumber == secondCell.RowNumber)
-    //     {
-    //         if (firstCell.ColNumber +1 == secondCell.ColNumber)
-    //         {
-    //             _currentMoveType = MoveType.Right;
-    //         }
-    //         else if (firstCell.ColNumber -1 == secondCell.ColNumber)
-    //         {
-    //             _currentMoveType = MoveType.Left;
-    //         }
-    //     }
-    //     else if (firstCell.ColNumber == secondCell.ColNumber)
-    //     {
-    //         if (firstCell.RowNumber +1 == secondCell.RowNumber)
-    //         {
-    //             _currentMoveType = MoveType.Up;
-    //         }
-    //         else if (firstCell.RowNumber -1 == secondCell.RowNumber)
-    //         {
-    //             _currentMoveType = MoveType.Down;
-    //         }
-    //     }
-    // }
+    
+    
 }

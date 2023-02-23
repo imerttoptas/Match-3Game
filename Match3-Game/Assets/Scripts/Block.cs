@@ -14,5 +14,4 @@ public class Block : MonoBehaviour
         transform.localScale = _transform.localScale;
     }
     
-    
 }

@@ -22,13 +22,13 @@ public class Cell : MonoBehaviour
         name = $"Cell{_rowNumber}x{_colNumber}";
     }
     
-    public MatchObject GetChildMatchObject()
+    public Block GetChildBlock()
     {
         if (transform.childCount >0)
         {
-            return GetComponentInChildren<MatchObject>();
+            return GetComponentInChildren<Block>();
         }
-
+        
         return null;
     }
 }

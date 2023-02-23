@@ -7,7 +7,6 @@ public class MatchChecker : MonoBehaviour
 {
     
     [SerializeField] private GridManager _gridManager;
-    private int a = 0;
     public bool IsThereAMatch(Cell cell, BlockType blockType)
     {
         return GetVerticalMatches(cell, blockType).Count >= 2 || GetHorizontalMatches(cell, blockType).Count >= 2;
@@ -49,7 +48,7 @@ public class MatchChecker : MonoBehaviour
      /// <param name="targetBlockType">Block type for Match control</param>
      /// <param name="maxSteps">Number of cells to look in the given direction</param>
      /// <returns>the list of matching cells found in the given direction.</returns>
-     public List<Cell> GetMatchingCellsInDirection(Cell cell, Vector2 direction,BlockType targetBlockType,int maxSteps = 2)
+     private List<Cell> GetMatchingCellsInDirection(Cell cell, Vector2 direction,BlockType targetBlockType,int maxSteps = 2)
      {
         List<Cell> matchingCells = new List<Cell>();
         int rowStep = (int)direction.x;
